@@ -1,0 +1,41 @@
+# Tip Calculator 
+
+def tip_calculator():
+    print("Welcome to the Tip Calculator!")
+
+    try:
+        # Input the total bill
+        total_bill = float(input("What is the total bill? $"))
+        if total_bill < 0:
+            raise ValueError("Bill amount be negative.")
+        
+        # Input the tip percentage
+        tip_percentage = float(input("Enter the tip percentage you'd like to give (e.g., 15 for 15%): "))
+        if tip_percentage < 0:
+            raise ValueError("Tip percentage cannot be negative.")
+        
+        # Input the number of people splitting the bill 
+        num_people = int(input("How many people are splitting the bill?: "))
+        if num_people <= 0:
+            raise ValueError("Number of people must be greater than 1.")
+        
+        # Calculate tip amount and total amount 
+        tip_amount = (tip_percentage / 100) * total_bill
+        total_with_tip = total_bill + tip_amount
+
+        # Calculate per person cost 
+        per_person = total_with_tip / num_people
+
+
+        # Display the Results 
+        print("\nCalculation Summary:")
+        print(f"Total bill before tip: ${total_bill:.2f}")
+        print(f"Tip percentage: {tip_percentage:.2f}%")
+        print(f"Tip amount: ${tip_amount:.2f}")
+        print(f"Total amount (with tip): ${total_with_tip:.2f}")
+        print(f"Amount per person: ${per_person:.2f}")
+    except ValueError as e:
+        print(f"Invalid input: {e}")
+
+# Run the Calculator
+tip_calculator()
